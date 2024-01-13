@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/task.dir/main.cpp.o CMakeFiles/task.dir/wrapper.cpp.o -o task 

@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/awl/projects/multithreading/28.9/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/task.dir/main.cpp.o -c /home/awl/projects/multithreading/28.9/main.cpp",
+  "file": "/home/awl/projects/multithreading/28.9/main.cpp"
+},
+{
+  "directory": "/home/awl/projects/multithreading/28.9/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/task.dir/wrapper.cpp.o -c /home/awl/projects/multithreading/28.9/wrapper.cpp",
+  "file": "/home/awl/projects/multithreading/28.9/wrapper.cpp"
+}
+]
