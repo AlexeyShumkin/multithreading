@@ -7,3 +7,7 @@ repo for section "multithreading"
  - Wrapper::multiThreadSum - метод суммирования чисел массива в нескольких потоках;
  - Wrapper::singleThreadSum - метод суммирования чисел массива в основном потоке;
  - в main.cpp замеряется время работы двух вышеперечисленных методов.
+
+ 28.9 Merge sorting
+ - добавлены методы mergeSort и merge в Wrapper;
+ - в main.cpp замеряется время сортировки массива.
