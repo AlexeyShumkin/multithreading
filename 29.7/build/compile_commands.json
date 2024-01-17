@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/awl/projects/multithreading/29.7/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/task.dir/main.cpp.o -c /home/awl/projects/multithreading/29.7/main.cpp",
+  "file": "/home/awl/projects/multithreading/29.7/main.cpp"
+},
+{
+  "directory": "/home/awl/projects/multithreading/29.7/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/task.dir/grainedQueue.cpp.o -c /home/awl/projects/multithreading/29.7/grainedQueue.cpp",
+  "file": "/home/awl/projects/multithreading/29.7/grainedQueue.cpp"
+}
+]
