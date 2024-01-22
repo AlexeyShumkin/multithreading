@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.22.1/CMakeSystem.cmake"
+			"path" : "/home/awl/projects/multithreading/build/CMakeFiles/3.22.1/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -260,7 +260,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
+			"path" : "/home/awl/projects/multithreading/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -489,7 +489,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
+			"path" : "/home/awl/projects/multithreading/build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -613,7 +613,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
+			"path" : "/home/awl/projects/multithreading/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -707,7 +707,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
+			"path" : "/home/awl/projects/multithreading/build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -751,8 +751,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/awl/projects/multithreading/29.7/build",
-		"source" : "/home/awl/projects/multithreading/29.7"
+		"build" : "/home/awl/projects/multithreading/build",
+		"source" : "/home/awl/projects/multithreading/28.9"
 	},
 	"version" : 
 	{

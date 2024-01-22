@@ -10,20 +10,40 @@ FineGrainedQueue::~FineGrainedQueue()
     clear();
 }
 
-void FineGrainedQueue::insertIntoMiddle(int value, int pos)
+void FineGrainedQueue::insertIntoMiddle(int value, size_t position)
 {
-    auto newNode = new Node(value);
-    pos = (pos <= 0)? 1 : pos;
-    int currentPos = 0;
-    auto currentNode = head_;
-    while(currentPos < pos - 1 && currentNode->next_)
+    Node *previous,*current;
+    queueMutex_.lock();
+    previous = head_;
+    current = head_->next_;
+    previous->nodeMutex_.lock();
+    queueMutex_.unlock();
+    if(current)
     {
-        currentNode = currentNode->next_;
-        ++currentPos;
+        current->nodeMutex_.lock();
     }
-    auto next = currentNode->next_;
-    currentNode->next_ = newNode;
+    int currentPosition = 0;
+    while (currentPosition < position - 1 && current)
+    {
+        auto oldPrevious = previous;
+        previous = current;
+        current = current->next_;
+        oldPrevious->nodeMutex_.unlock();
+        if (current)
+        {
+            current->nodeMutex_.lock();
+        }
+        ++currentPosition;
+    }
+    auto next = current;
+    auto newNode = new Node(value);
+    previous->next_ = newNode;
     newNode->next_ = next;
+    previous->nodeMutex_.unlock();
+    if(current)
+    {
+        current->nodeMutex_.unlock();
+    }
 }
 
 void FineGrainedQueue::clear()

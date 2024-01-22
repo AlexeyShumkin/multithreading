@@ -83,7 +83,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/awl/projects/multithreading/29.7/build"
+			"value" : "/home/awl/projects/multithreading/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/awl/projects/multithreading/29.7"
+			"value" : "/home/awl/projects/multithreading/28.9"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1715,7 +1715,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/awl/projects/multithreading/29.7/build"
+			"value" : "/home/awl/projects/multithreading/build"
 		},
 		{
 			"name" : "task_IS_TOP_LEVEL",
@@ -1739,7 +1739,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/awl/projects/multithreading/29.7"
+			"value" : "/home/awl/projects/multithreading/28.9"
 		}
 	],
 	"kind" : "cache",
