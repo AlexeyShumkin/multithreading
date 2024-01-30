@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/awl/projects/multithreading/thread_pool/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/pool.dir/main.cpp.o -c /home/awl/projects/multithreading/thread_pool/main.cpp",
+  "file": "/home/awl/projects/multithreading/thread_pool/main.cpp"
+},
+{
+  "directory": "/home/awl/projects/multithreading/thread_pool/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/pool.dir/pool.cpp.o -c /home/awl/projects/multithreading/thread_pool/pool.cpp",
+  "file": "/home/awl/projects/multithreading/thread_pool/pool.cpp"
+},
+{
+  "directory": "/home/awl/projects/multithreading/thread_pool/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/pool.dir/handler.cpp.o -c /home/awl/projects/multithreading/thread_pool/handler.cpp",
+  "file": "/home/awl/projects/multithreading/thread_pool/handler.cpp"
+}
+]
