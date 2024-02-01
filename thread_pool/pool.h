@@ -8,9 +8,15 @@
 
 class RequestHandler;
 
-typedef std::function<void()> task_type;
-typedef void (*FuncType) (RequestHandler&, int*, long, long);
-typedef std::future<void> res_type;
+using task_type = std::function<void()>;
+using FuncType = void (*) (RequestHandler&, int*, long, long);
+using res_type = std::future<void>;
+
+struct PromiseTask
+{
+    task_type task;
+    std::promise<void> prom;
+};
 
 class ThreadPool
 {
@@ -21,13 +27,8 @@ public:
     res_type push_task(FuncType f, RequestHandler& rh, int* arr, long arg1, long arg2);
     void threadFunc(int qindex);
 private:
-    struct PromiseTask
-    {
-        task_type task;
-        std::promise<void> prom;
-    };
-    int m_thread_count{};
+    int m_thread_count{ 0 };
     std::vector<std::thread> m_threads;
     std::vector<BlockedQueue<PromiseTask>> m_thread_queues;
-    int m_index{};
+    int m_index{ 0 };
 };

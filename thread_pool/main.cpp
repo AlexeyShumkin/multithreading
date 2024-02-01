@@ -1,7 +1,11 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <filesystem>
+#include <fstream>
 #include "handler.h"
+
+bool make_thread{ false };
 
 void quicksort(RequestHandler& rh, int* array, long left, long right)
 {
@@ -28,7 +32,7 @@ void quicksort(RequestHandler& rh, int* array, long left, long right)
         }
     } while (left_bound <= right_bound);
 
-    if (right_bound - left > 10000)
+    if (make_thread && right_bound - left > 10000)
     {
         auto f = rh.push_task(quicksort, rh, array, left, right_bound); 
         quicksort(rh, array, left_bound, right);
@@ -42,22 +46,42 @@ void quicksort(RequestHandler& rh, int* array, long left, long right)
     }
 }
 
+void doSpecSort(FuncType f, RequestHandler& rh, int* arr, long left, long right, std::filesystem::path path)
+{
+    auto start = std::chrono::high_resolution_clock::now();
+    f(rh, arr, left, right - 1);
+    auto finish = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> res = finish - start;
+    std::cout << "1) sorting time: " << res.count() << " seconds" << std::endl;
+    std::ofstream out(path);
+    for(size_t i = 0; i < right; ++i)
+    {
+        out << arr[i];
+    }
+    out.close();
+    std::cout << "2) file size: " << std::filesystem::file_size(path) << " bytes" << std::endl;
+}
 
 int main()
 {
-    RequestHandler rh;
-    std::random_device rd;
-    std::uniform_int_distribution<int> dist(0, 100);
     size_t size{ 100000 };
-    int* arr = new int[size];
+    int* arr1 = new int[size];
+    int* arr2 = new int[size];
+    std::random_device rd;
+    std::uniform_int_distribution<int> dist(0, 9);
     for(size_t i = 0; i < size; ++i)
     {
-        arr[i] = dist(rd);
+        arr1[i] = dist(rd);
+        arr2[i] = arr1[i];
     }
-    auto start = std::chrono::high_resolution_clock::now();
-    quicksort(rh, arr, 0, size - 1);
-    auto finish = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> res = finish - start;
-    std::cout << "result: " << res.count() << " sec" << std::endl;
-    delete[] arr;
+    RequestHandler rh;
+    std::filesystem::path path1 = "size_test_1";
+    std::cout << "Single thread sorting results: \n";
+    doSpecSort(quicksort, rh, arr1, 0, size, path1);
+    make_thread = true;
+    std::cout << "\nSorting with thread pool results: \n";
+    std::filesystem::path path2 = "size_test_2";
+    doSpecSort(quicksort, rh, arr2, 0, size, path2);
+    delete[] arr1;
+    delete[] arr2;
 }

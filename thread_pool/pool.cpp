@@ -40,8 +40,8 @@ void ThreadPool::threadFunc(int qindex)
     while (true) 
     {
         PromiseTask task_to_do;
-        bool res{};
-        int i{};
+        bool res{ false };
+        int i{ 0 };
         for (; i < m_thread_count; ++i) 
         {
             if (res = m_thread_queues[(qindex + i) % m_thread_count].fast_pop(task_to_do))
@@ -53,12 +53,10 @@ void ThreadPool::threadFunc(int qindex)
         }
         else if (!task_to_do.task) 
         {
-            m_thread_queues[(qindex + i) % m_thread_count].push(task_to_do);
+            m_thread_queues[(qindex + i - 1) % m_thread_count].push(task_to_do);
         }
-        if (!task_to_do.task) 
-        {
+        if (!task_to_do.task)
             return;
-        }
         task_to_do.task();
         task_to_do.prom.set_value();
     }
