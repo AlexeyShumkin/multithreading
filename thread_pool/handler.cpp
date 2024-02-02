@@ -1,4 +1,5 @@
 #include "handler.h"
+#include <iostream>
 
 RequestHandler::RequestHandler()
 {
@@ -10,7 +11,7 @@ RequestHandler::~RequestHandler()
     pool_.stop();
 }
 
-res_type RequestHandler::push_task(FuncType f, RequestHandler& rh, int* arr, long arg1, long arg2)
+std::future<void> RequestHandler::push_task(FuncType f, int* arr, long arg1, long arg2)
 {
-    return pool_.push_task(f, rh, arr, arg1, arg2);
+    return pool_.push_task(f, arr, arg1, arg2);
 }
