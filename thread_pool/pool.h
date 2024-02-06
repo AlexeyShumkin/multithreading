@@ -4,6 +4,7 @@
 #include <functional>
 #include <future>
 #include <memory>
+#include <atomic>
 #include "blockedQueue.h"
 
 using task_type = std::function<void()>;

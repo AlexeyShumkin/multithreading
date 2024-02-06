@@ -1,3 +1,4 @@
+#pragma once
 #include "pool.h"
 
 class RequestHandler

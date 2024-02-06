@@ -9,8 +9,10 @@ class BlockedQueue
 public:
     void push(T& item)
     {
-        std::lock_guard<std::mutex> l(m_locker);
-        m_task_queue.push(std::move(item));
+        {
+            std::unique_lock<std::mutex> l(m_locker);
+            m_task_queue.push(std::move(item));
+        }
         m_notifier.notify_one();
     }
     void pop(T& item)
@@ -25,8 +27,8 @@ public:
     }
     bool fast_pop(T& item)
     {
-        std::lock_guard<std::mutex> l(m_locker);
-        if (m_task_queue.empty()) 
+        std::unique_lock<std::mutex> l(m_locker);
+        if (m_task_queue.empty())
             return false;
         item = std::move(m_task_queue.front());
         m_task_queue.pop();

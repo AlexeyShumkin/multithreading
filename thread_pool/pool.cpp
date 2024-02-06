@@ -2,11 +2,11 @@
 
 ThreadPool::ThreadPool():
    m_thread_count(std::thread::hardware_concurrency() != 0? std::thread::hardware_concurrency():4),
-   m_thread_queues(m_thread_count) {}
+   m_thread_queues(m_thread_count){}
 
 void ThreadPool::start() 
 {
-   for(int i = 0;i < m_thread_count; ++i) 
+   for(int i = 0; i < m_thread_count; ++i) 
    {
        m_threads.emplace_back(&ThreadPool::threadFunc, this, i);
    }
@@ -14,7 +14,7 @@ void ThreadPool::start()
 
 void ThreadPool::stop() 
 {
-   for(int i = 0;i < m_thread_count; ++i) 
+   for(int i = 0; i < m_thread_count; ++i) 
    {
        task_type empty_task;
        m_thread_queues[i].push(empty_task);
@@ -48,7 +48,9 @@ void ThreadPool::threadFunc(int qindex)
         for (; i < m_thread_count; ++i) 
         {
             if (res = m_thread_queues[(qindex + i) % m_thread_count].fast_pop(task_to_do))
+            {
                 break;
+            }
         }
         if (!res) 
         {
@@ -59,7 +61,9 @@ void ThreadPool::threadFunc(int qindex)
             m_thread_queues[(qindex + i - 1) % m_thread_count].push(task_to_do);
         }
         if (!task_to_do)
+        {
             return;
+        }
         task_to_do();
     }
 }
